@@ -1,0 +1,29 @@
+{
+    "name": "YouTube Downloader",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "forwardPorts": [
+        5000,
+        8000  // Add frontend port if serving static files
+    ],
+    "portsAttributes": {
+        "5000": {
+            "label": "Backend API",
+            "protocol": "https",
+            "onAutoForward": "openPreview"
+        },
+        "8000": {
+            "label": "Frontend",
+            "protocol": "https",
+            "onAutoForward": "openPreview"
+        }
+    },
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "frontend/index.html"
+            ]
+        }
+    }
+}
