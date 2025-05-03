@@ -1,19 +1,12 @@
-FROM python:3.10-slim
+FROM python:3.10
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
+# Install ffmpeg and other dependencies
+RUN apt update && \
+    apt install -y ffmpeg && \
+    pip install --no-cache-dir flask flask-cors yt-dlp
 
 # Set working directory
 WORKDIR /workspace
 
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose ports
-EXPOSE 5000 8000
-
-# Startup command
-CMD ["python", "backend/app.py"]
+# Expose Flask port
+EXPOSE 5000
