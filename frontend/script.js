@@ -19,7 +19,7 @@ async function processUrl() {
     loading.style.display = 'block';
     
     try {
-        const response = await fetch('http://localhost:5000/api/info', {
+        const response = await fetch(`https://redesigned-fiesta-pjwx9g7vpqx5c6g95-5000.app.github.dev/api/info`,{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url: videoUrl })
@@ -90,7 +90,7 @@ async function downloadVideo(url, formatId, quality, format) {
         button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Preparing...`;
         errorElement.textContent = '';
         
-        const response = await fetch('http://localhost:5000/api/download', {
+        const response = await fetch('https://redesigned-fiesta-pjwx9g7vpqx5c6g95-5000.app.github.dev/api/download', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url, format_id: formatId, quality })

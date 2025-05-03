@@ -6,14 +6,7 @@ import re
 from urllib.parse import quote
 
 app = Flask(__name__)
-CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "https://*.githubpreview.dev",
-            "http://localhost:*"
-        ]
-    }
-})
+CORS(app)
 
 def sanitize_filename(filename):
     # Remove illegal characters and clean up the filename
